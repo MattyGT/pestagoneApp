@@ -1,0 +1,49 @@
+<div class="row">
+  <a routerLink="/jobcards" class="link link-primary"><i class="fa fa-arrow-circle-o-left"> back to Job Cards</i></a>
+</div>
+<div class="card m-1">
+  <div class="card-header">Job Cards</div>
+  <div class="card-body">
+    <form #jobCardForm="ngForm" (ngSubmit)="onSubmit(jobCardForm)">
+      <div class="d-inline form-group col-md-6 float-left">
+        <label for="inspection">Inspection</label>
+        <input 
+          type="text" 
+          class="form-control"
+          name="inspection" 
+          #jobCardInspection="ngModel" 
+          [ngClass]="{'is-invalid':jobCardInspection.errors && jobCardInspection.touched}" 
+          [(ngModel)]="jobCardInspectionText" 
+          minlength="2" 
+          required
+        >
+      </div>
+      <div [hidden]="!jobCardInspection.errors?.required" class="invalid-feedback">
+        Inspection required
+      </div>
+      <div [hidden]="!jobCardInspection.errors?.required" class="invalid-feedback">
+        Must be at least 2 characters
+      </div>
+
+      <div class="d-inline form-group col-md-6 float-right">
+          <label for="inspection">Certificate Number</label>
+          <input 
+            type="text" 
+            class="form-control"
+            name="certificate" 
+            #certificateNumber="ngModel" 
+            [ngClass]="{'is-invalid':certificateNumber.errors && certificateNumber.touched}" 
+            [(ngModel)]="certificateNumberText" 
+            minlength="2" 
+            required
+          >
+        </div>
+        <div [hidden]="!certificateNumber.errors?.required" class="invalid-feedback">
+          Certificate number required
+        </div>
+        <div [hidden]="!certificateNumber.errors?.required" class="invalid-feedback">
+          Must be at least 2 characters
+        </div>
+    </form>
+  </div>
+</div>

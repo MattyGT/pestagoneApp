@@ -1,0 +1,30 @@
+<nav class="navbar navbar-dark navbar-expand-md bg-info text-light">
+  <div class="container">
+    <a href="" class="navbar-brand card" id="nav-logo"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMain">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarMain">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a routerLink="/" class="nav-link"><i class="fa fa-home"></i> Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a  routerLink="/jobcards" class="nav-link"><i class="fa fa-clone"></i> Job Cards</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a routerLink="/clients" class="nav-link"><i class="fa fa-address-card"></i> Clients</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/users" class="nav-link"><i class="fa fa-users"></i> Users</a>
+          </li>
+        <li class="nav-item">
+          <a href="" class="nav-link" *ngIf="this.user.id"><i class="fa fa-lock"></i> Logout</a>
+          <a routerLink="/login" class="nav-link" *ngIf="!this.user.id"><i class="fa fa-lock-open"></i> Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

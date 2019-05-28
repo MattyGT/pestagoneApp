@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+#nav-logo{
+  width: 90px;
+  height: 40px;
+  background-image: url('src/assets/images/pestagone_logo.jpg');
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}

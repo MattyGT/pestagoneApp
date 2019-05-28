@@ -1,0 +1,36 @@
+<div class="row m-1">
+  <h5><i class="fa fa-clone"></i> Job Cards</h5>
+</div>
+<div class="col-md-1 mx-auto text-center" *ngIf="loading else loaded">
+  <img src="../../assets/images/loading.gif" />
+</div>
+
+<ng-template #loaded>
+  <div class="card p-0 m-0" *ngIf="jobCards?.length > 0; else noJobCards">
+    <table class="table table-striped">
+      <thead class="thead-inverse">
+        <tr>
+          <th>Date</th>
+          <th>Owner/Seller</th>
+          <th>Certificate #</th>
+          <th>Type</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let jobCard of jobCards">
+          <td>{{ jobCard.dateJobCardCreated }}</td>
+          <td>{{ jobCard.ownerSellerName }}</td>
+          <td>{{ jobCard.certificateNumber != ''?jobCard.certificateNumber:'-' }}</td>
+          <td>{{ jobCard.inspectionType }}</td>
+          <td><a routerLink="view/{{ jobCard.id }}" class="btn btn-secondary btn-sm"><i class="fa fa-arrow-circle-o-right"></i> Details</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </ng-template>
+  
+  <ng-template #noJobCards>
+    <hr>
+    <div class="row bg-danger">No job cards found</div>
+  </ng-template>

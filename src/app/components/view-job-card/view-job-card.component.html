@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col-md-6">
+    <a routerLink="/jobcards" class="btn btn-link"><i class="fa fa-arrow-circle-o-left"></i> Back to Job Cards</a>
+  </div>
+  <div class="col-md-6">
+    <div class="btn-group pull-right">
+      <a routerLink="/jobcards/edit/{{ id }}" class="btn btn-dark">Update</a>
+      <button class="btn btn-danger">Delete</button>
+    </div>
+  </div>
+</div>
+<div class="card mt-2">
+  <div class="card-header"><h5><i class="fa fa-list-alt"></i> Job Card: <i>{{ id }}</i><span
+    [class.text-danger]="jobCard.amountOwed > 0"
+    [class.text-success]="jobCard.amountOwed == 0"
+  > {{ jobCard.amountOwed | currency:"R" }}</span></h5></div>
+  <div class="card-body">
+      <div class="row">
+        <div class="card bg-info col-md-4 p-3 ml-auto mr-auto mb-4 text-light">
+        <div class="text-center">
+          <span class="font-weight-bold">Type:</span> {{ jobCard.inspectionType }}
+        </div>
+        <div class="text-center"><span class="font-weight-bold">Registration Date: </span><i>{{ jobCard.registrationDate != '' ? jobCard.registrationDate : '-' }}</i></div>
+        </div>
+      </div>
+    <div class="row">
+      <div class="col-md-4 float-left">
+        <span class="font-weight-bold">Inspection Fee:</span> {{ jobCard.inspectionFee | currency:"R" }}
+      </div>
+      <div class="col-md-4 float-left">
+        <span class="font-weight-bold">Repair Fee:</span> {{ jobCard.repairFee | currency:"R" }}
+      </div>
+      <div class="col-md-4 float-right">
+        <span class="font-weight-bold">Certificate Number:</span> {{ jobCard.certificateNumber }}
+      </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-md-4">
+          <span class="font-weight-bold">Quotation Date:</span> {{ jobCard.quotationDate }}
+        </div>  
+      <div class="col-md-4">
+          <span class="font-weight-bold">Inspection Date:</span> {{ jobCard.inspectionDate }}
+        </div>
+        <div class="col-md-4">
+          <span class="font-weight-bold">Repair Date:</span> {{ jobCard.repairDate }}
+        </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-md-12">
+        <span class="font-weight-bold">Sales Person:</span> {{ jobCard.salesPerson }}
+      </div>  
+    </div>
+    <div class="row mt-2">
+      <div class="col-md-2">
+          <span class="font-weight-bold">Address: </span>
+      </div>
+      <div class="col-md-auto">
+        <span *ngIf="jobCard.address.unitNumber != null">Unit {{ jobCard.address.unitNumber }}, </span> <span *ngIf="jobCard.address.complexName != ''">{{ jobCard.address.complexName }}, </span>{{ jobCard.address.streetNumber }} {{ jobCard.address.street }}, {{ jobCard.address.suburb }}, {{ jobCard.address.city }}, {{ jobCard.address.postCode }}
+      </div>  
+    </div>
+  </div>
+</div>
